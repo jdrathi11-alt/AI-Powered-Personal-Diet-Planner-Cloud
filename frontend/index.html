@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Diet Planner — Cloud Demo</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div><strong>Cloud Diet Planner</strong><span class="tag">Student Cloud Project</span></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#dashboard">Dashboard</a>
+    <button id="logoutBtn" class="link-button">Logout</button>
+  </nav>
+</header>
+
+<main class="container">
+  <section id="home" class="hero">
+    <div>
+      <p class="eyebrow">AI + CLOUD COMPUTING</p>
+      <h1>Personal Diet Planner with Cloud Storage</h1>
+      <p>Generate a general wellness meal-plan example, save it, and demonstrate user-specific cloud application architecture.</p>
+      <a class="button" href="#auth">Get Started</a>
+    </div>
+    <div class="hero-card">
+      <span>Architecture</span>
+      <strong>Browser → REST API → AI Engine → Database + Object Storage</strong>
+    </div>
+  </section>
+
+  <section id="auth" class="auth-section">
+    <div class="auth-card">
+      <div class="auth-intro">
+        <p class="eyebrow">WELCOME BACK</p>
+        <h2>Access your diet planner</h2>
+        <p>Sign in to continue, or create a demo account to build your personalized wellness plan.</p>
+      </div>
+
+      <div class="auth-tabs" role="tablist" aria-label="Authentication">
+        <button id="loginTab" class="auth-tab active" type="button" role="tab" aria-selected="true">Login</button>
+        <button id="registerTab" class="auth-tab" type="button" role="tab" aria-selected="false">Create account</button>
+      </div>
+
+      <div id="loginPanel" class="auth-panel">
+        <form id="loginForm">
+          <label>Email<input name="email" type="email" placeholder="you@example.com" autocomplete="email" required></label>
+          <label>Password<input name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required></label>
+          <button class="button auth-submit" type="submit">Login to dashboard</button>
+        </form>
+        <p id="loginMsg" class="message"></p>
+        <p class="auth-switch">New here? <button id="showRegister" type="button">Create an account</button></p>
+      </div>
+
+      <div id="registerPanel" class="auth-panel hidden">
+        <form id="registerForm">
+          <label>Name<input name="name" placeholder="Your name" autocomplete="name" required></label>
+          <label>Email<input name="email" type="email" placeholder="you@example.com" autocomplete="email" required></label>
+          <label>Password<input name="password" type="password" placeholder="At least 8 characters" autocomplete="new-password" minlength="8" required></label>
+          <button class="button auth-submit" type="submit">Create demo account</button>
+        </form>
+        <p id="registerMsg" class="message"></p>
+        <p class="auth-switch">Already have an account? <button id="showLogin" type="button">Log in</button></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard" class="dashboard hidden">
+    <div class="dashboard-head">
+      <div>
+        <p class="eyebrow">DASHBOARD</p>
+        <h2>Welcome, <span id="userName">Demo User</span></h2>
+      </div>
+      <span id="authState" class="pill">Not logged in</span>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>Profile</h3>
+        <form id="profileForm">
+          <input name="age" type="number" min="1" placeholder="Age">
+          <input name="height_cm" type="number" step="0.1" placeholder="Height (cm)">
+          <input name="weight_kg" type="number" step="0.1" placeholder="Weight (kg)">
+          <select name="activity_level">
+            <option value="low">Low activity</option>
+            <option value="moderate" selected>Moderate activity</option>
+            <option value="high">High activity</option>
+          </select>
+          <select name="dietary_preference">
+            <option value="vegetarian">Vegetarian</option>
+            <option value="vegan">Vegan</option>
+            <option value="non-vegetarian">General / Non-Vegetarian</option>
+          </select>
+          <select name="goal">
+            <option>General balanced eating</option>
+            <option>Weight-management demo</option>
+            <option>Fitness-oriented demo</option>
+          </select>
+          <input name="allergies" placeholder="Optional demo preferences/exclusions">
+          <button class="button">Save profile</button>
+        </form>
+        <p id="profileMsg" class="message"></p>
+      </div>
+
+      <div class="card">
+        <h3>Generate plan</h3>
+        <p>Uses the local rule-based engine unless an optional AI API is configured on the server.</p>
+        <button id="generateBtn" class="button">Generate example</button>
+        <div id="planPreview" class="plan hidden"></div>
+        <button id="savePlanBtn" class="button secondary hidden">Save plan</button>
+        <p id="planMsg" class="message"></p>
+      </div>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>Saved plans</h3>
+        <div id="plans"></div>
+      </div>
+      <div class="card">
+        <h3>Cloud files</h3>
+        <form id="uploadForm">
+          <input id="fileInput" name="file" type="file" required>
+          <button class="button">Upload</button>
+        </form>
+        <p id="uploadMsg" class="message"></p>
+        <div id="files"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="notice">
+    <strong>Educational disclaimer:</strong> Generated plans are general wellness examples using demo data. They are not medical or clinical nutrition advice.
+  </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ai-personal-diet-planner
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn backend.app:app
+    healthCheckPath: /api/health
+    envVars:
+      - key: SECRET_KEY
+        sync: false
+      - key: DATABASE_MODE
+        value: sqlite
+      - key: STORAGE_MODE
+        value: local
+      - key: CORS_ORIGINS
+        value: "*"
