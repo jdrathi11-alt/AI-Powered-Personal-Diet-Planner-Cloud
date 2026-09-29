@@ -10,8 +10,21 @@ services:
       - key: SECRET_KEY
         sync: false
       - key: DATABASE_MODE
-        value: sqlite
+        value: supabase
       - key: STORAGE_MODE
-        value: local
+        value: supabase
+      
+      - key: SUPABASE_URL
+        sync: false
+
+      - key: SUPABASE_KEY
+        sync: false
+
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+
+      - key: SUPABASE_BUCKET
+        value: user-files
+     
       - key: CORS_ORIGINS
         value: "*"
